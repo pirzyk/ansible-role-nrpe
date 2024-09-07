@@ -84,7 +84,7 @@ shell> ansible-playbook nrpe.yml -e nrpe_debug=true -t nrpe_debug
 shell> ansible-playbook nrpe.yml -e nrpe_install=true -t nrpe_packages
 ```
 
-* Create /usr/local/etc/nrpe.cfg
+* Create /usr/local/etc/nrpe.cfg from sample if missing
 
 ```bash
 shell> ansible-playbook nrpe.yml -t nrpe_conf_create
