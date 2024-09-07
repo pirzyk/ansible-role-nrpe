@@ -15,7 +15,7 @@ nrpe_conf:
     val: "{{ nrpe_log_file }}"
     present: true
   - key: allowed_hosts
-    val: "{{ nrpe_allowed_hosts|join(',') }}"
+    val: "{{ nrpe_allowed_hosts | join(',') }}"
     present: true
   - key: dont_blame_nrpe
     val: "{{ nrpe_dont_blame_nrpe }}"

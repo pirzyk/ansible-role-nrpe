@@ -1,6 +1,8 @@
 # nrpe
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/nrpe)[![Build Status](https://travis-ci.org/vbotka/ansible-nrpe.svg?branch=master)](https://travis-ci.org/vbotka/ansible-nrpe)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/nrpe)
+[![Build Status](https://travis-ci.org/vbotka/ansible-nrpe.svg?branch=master)](https://travis-ci.org/vbotka/ansible-nrpe)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-nrpe)](https://github.com/vbotka/ansible-nrpe/tags)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/nrpe/) Install and configure NRPE.
 
@@ -15,40 +17,34 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ### Roles
 
-- [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
+* [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
 
 ### Collections
 
-- community.general
+*community.general
 
 
-## Variables
+## Role Variables
 
-Review defaults and examples in vars.
+Review the defaults and examples in vars.
 
 
 ## Workflow
 
-1) Install roles
+* Install roles
 
 ```bash
 shell> ansible-galaxy role install vbotka.nrpe
 shell> ansible-galaxy role install vbotka.ansible_lib
 ```
 
-1) Install the collection if necessary
+* Install the collection if necessary
 
 ```bash
 shell> ansible-galaxy collection install community.general
 ```
 
-2) Change variables, for example in vars/main.yml
-
-```bash
-shell> editor vbotka.nrpe/vars/main.yml
-```
-
-3) Create playbook and inventory
+* Create playbook and inventory
 
 ```yaml
 shell> cat nrpe.yml
@@ -63,50 +59,50 @@ shell> cat hosts
 <webserver-ip-or-fqdn>
 [webserver:vars]
 ansible_connection=ssh
-ansible_user=freebsd
+ansible_user=admin
 ansible_become=true
 ansible_become_method=sudo
 ansible_python_interpreter=/usr/local/bin/python3.9
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
 
-4a) Check syntax
+* Check syntax
 
 ```bash
 shell> ansible-playbook nrpe.yml --syntax-check
 ```
 
-4b) Display variables
+* Display variables
 
 ```bash
 shell> ansible-playbook nrpe.yml -e nrpe_debug=true -t nrpe_debug
 ```
 
-4c) Install packages
+* Install packages
 
 ```bash
 shell> ansible-playbook nrpe.yml -e nrpe_install=true -t nrpe_packages
 ```
 
-4d) Create /usr/local/etc/nrpe.cfg
+* Create /usr/local/etc/nrpe.cfg from sample if missing
 
 ```bash
 shell> ansible-playbook nrpe.yml -t nrpe_conf_create
 ```
 
-4e) Dry-run and show changes
+* Dry-run and show changes
 
 ```bash
 shell> ansible-playbook nrpe.yml --check --diff
 ```
 
-5) Run the playbook if all seems to be right
+* Run the playbook if all seems to be right
 
 ```bash
 shell> ansible-playbook nrpe.yml
 ```
 
-6) Plugins (TBD)
+* Plugins (TBD)
 		
 
 ## References

@@ -1,6 +1,5 @@
 ---
-
-- name: "log: Create {{ nrpe_log_file }}"
+- name: "Log: Create {{ nrpe_log_file }}"
   ansible.builtin.file:
     state: touch
     access_time: preserve
@@ -11,4 +10,3 @@
     mode: "{{ nrpe_log_file_mode }}"
 
 # EOF
-...

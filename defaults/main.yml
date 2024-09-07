@@ -1,5 +1,6 @@
 ---
 # defaults for nrpe
+nrpe_role_version: 2.6.0
 
 nrpe_enable: false
 nrpe_install: true
@@ -8,9 +9,8 @@ nrpe_backup_conf: false
 
 nrpe_log_file_enable: false
 nrpe_log_file: /var/log/nrpe.log
-nrpe_log_file_mode: '0640'
+nrpe_log_file_mode: "0640"
 
 nrpe_conf: []
 
 # EOF
-...

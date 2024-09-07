@@ -1,31 +1,29 @@
 ---
-
-- name: "rcconf: Configure /etc/rc.conf"
+- name: "Rcconf: Configure /etc/rc.conf"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*{{ item.key }}\s*=(.*)$
     line: '{{ item.key }}="{{ item.value }}"'
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_rcconf }}"
   notify: restart nrpe
 
-- name: "rcconf: Enable and Start {{ nrpe_service }}"
+- name: "Rcconf: Enable and Start {{ nrpe_service }}"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*{{ nrpe_service }}_enable\s*=(.*)$'
+    regexp: ^\s*{{ nrpe_service }}_enable\s*=(.*)$
     line: '{{ nrpe_service }}_enable="YES"'
     backup: "{{ nrpe_backup_conf }}"
   notify: enable and start nrpe
-  when: nrpe_enable|bool
+  when: nrpe_enable | bool
 
-- name: "rcconf: Disable and Stop {{ nrpe_service }}"
+- name: "Rcconf: Disable and Stop {{ nrpe_service }}"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*{{ nrpe_service }}_enable\s*=(.*)$'
+    regexp: ^\s*{{ nrpe_service }}_enable\s*=(.*)$
     line: '{{ nrpe_service }}_enable="NO"'
     backup: "{{ nrpe_backup_conf }}"
   notify: disable and stop nrpe
-  when: not nrpe_enable|bool
+  when: not nrpe_enable | bool
 
 # EOF
-...

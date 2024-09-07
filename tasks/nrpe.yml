@@ -1,51 +1,49 @@
 ---
-
-- name: "nrpe: Remove {{ nrpe_conf_file }}"
+- name: "Nrpe: Remove {{ nrpe_conf_file }}"
   ansible.builtin.file:
     path: "{{ nrpe_conf_file }}"
     state: absent
-  when: nrpe_conf_recreate|default(false)|bool
+  when: nrpe_conf_recreate | d(false) | bool
 
-- name: "nrpe: Create {{ nrpe_conf_file }}"
+- name: "Nrpe: Create {{ nrpe_conf_file }}"
   ansible.builtin.command:
-    cmd: "cp {{ nrpe_conf_file }}.sample {{ nrpe_conf_file }}"
+    cmd: cp {{ nrpe_conf_file }}.sample {{ nrpe_conf_file }}
     creates: "{{ nrpe_conf_file }}"
   tags: nrpe_conf_create
 
-- name: "nrpe: Set owner and group of {{ nrpe_conf_file }}"
+- name: "Nrpe: Set owner and group of {{ nrpe_conf_file }}"
   ansible.builtin.file:
     path: "{{ nrpe_conf_file }}"
     owner: "{{ nrpe_conf_owner }}"
     group: "{{ nrpe_conf_group }}"
 
-- name: "nrpe: Configure items in {{ nrpe_conf_file }}"
+- name: "Nrpe: Configure items in {{ nrpe_conf_file }}"
   ansible.builtin.lineinfile:
     dest: "{{ nrpe_conf_file }}"
-    regexp: '^\s*#*\s*{{ item.key }}\s*=(.*)$'
+    regexp: ^\s*#*\s*{{ item.key }}\s*=(.*)$
     line: "{{ item.key }}={{ item.val }}"
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
-  when: item.present|default(true)
+  when: item.present | d(true)
   notify: reload nrpe
 
-- name: "nrpe: Remove items from {{ nrpe_conf_file }}"
+- name: "Nrpe: Remove items from {{ nrpe_conf_file }}"
   ansible.builtin.lineinfile:
     backrefs: true
     dest: "{{ nrpe_conf_file }}"
-    regexp: '^\s*#*\s*{{ item.key }}\s*=(.*)$'
-    line: '# {{ item.key }}=\1'
+    regexp: ^\s*#*\s*{{ item.key }}\s*=(.*)$
+    line: "# {{ item.key }}=\\1"
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
-  when: not item.present|default(true)
+  when: not item.present | d(true)
   notify: reload nrpe
 
-- name: "nrpe: Create {{ nrpe_conf_file_dir }}"
+- name: "Nrpe: Create {{ nrpe_conf_file_dir }}"
   ansible.builtin.file:
     state: directory
     path: "{{ nrpe_conf_file_dir }}"
     owner: "{{ nrpe_conf_owner }}"
     group: "{{ nrpe_conf_group }}"
-    mode: '0755'
+    mode: "0755"
 
 # EOF
-...
