@@ -1,6 +1,5 @@
 ---
-
-- name: "packages-freebsd: Install packages"
+- name: "Packages-freebsd: Install packages"
   community.general.pkgng:
     name: "{{ nrpe_packages }}"
   register: result
@@ -9,7 +8,7 @@
   delay: "{{ freebsd_install_delay }}"
   when: freebsd_install_method|lower == 'packages'
 
-- name: "packages-freebsd: Install ports"
+- name: "Packages-freebsd: Install ports"
   community.general.portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
@@ -21,4 +20,3 @@
   when: freebsd_install_method|lower == 'ports'
 
 # EOF
-...

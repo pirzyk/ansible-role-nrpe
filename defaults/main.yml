@@ -9,7 +9,7 @@ nrpe_backup_conf: false
 
 nrpe_log_file_enable: false
 nrpe_log_file: /var/log/nrpe.log
-nrpe_log_file_mode: '0640'
+nrpe_log_file_mode: "0640"
 
 nrpe_conf: []
 

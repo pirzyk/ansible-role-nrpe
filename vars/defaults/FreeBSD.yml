@@ -17,7 +17,6 @@ nrpe_group: nagios
 # rc.conf
 nrpe_service: nrpe
 nrpe_rcconf: []
-
 # nrpe.cfg
 nrpe_conf_recreate: false
 nrpe_conf_file: /usr/local/etc/nrpe.cfg
@@ -26,4 +25,3 @@ nrpe_conf_owner: root
 nrpe_conf_group: wheel
 
 # EOF
-...
