@@ -10,12 +10,12 @@ vbotka.nrpe 2.6 Release Notes
 
 Release Summary
 ---------------
-
 Ansible 2.17 update
 
 Major Changes
 -------------
 * Supported FreeBSD 13.3, 14.0, and 14.1
+* Fix lint errors and warnings.
 
 Minor Changes
 -------------
@@ -23,7 +23,6 @@ Minor Changes
 * Add changelog
 * Update Ansible lint configuration.
 * Update README.
-
 
 Bugfixes
 --------
