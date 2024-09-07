@@ -16,6 +16,7 @@ Major Changes
 -------------
 * Supported FreeBSD 13.3, 14.0, and 14.1
 * Fix lint errors and warnings.
+* Update handlers. Listen on lowercase names.
 
 Minor Changes
 -------------

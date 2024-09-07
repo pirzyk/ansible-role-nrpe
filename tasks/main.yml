@@ -7,17 +7,17 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: nrpe_debug|bool
+  when: nrpe_debug | bool
   tags: nrpe_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: nrpe_install|bool
+  when: nrpe_install | bool
   tags: nrpe_packages
 
 - name: Import log.yml
   ansible.builtin.import_tasks: log.yml
-  when: nrpe_log_file_enable|bool
+  when: nrpe_log_file_enable | bool
   tags: nrpe_log
 
 - name: Import nrpe.yml

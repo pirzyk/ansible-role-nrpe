@@ -15,7 +15,7 @@
     line: '{{ nrpe_service }}_enable="YES"'
     backup: "{{ nrpe_backup_conf }}"
   notify: enable and start nrpe
-  when: nrpe_enable|bool
+  when: nrpe_enable | bool
 
 - name: "Rcconf: Disable and Stop {{ nrpe_service }}"
   ansible.builtin.lineinfile:
@@ -24,6 +24,6 @@
     line: '{{ nrpe_service }}_enable="NO"'
     backup: "{{ nrpe_backup_conf }}"
   notify: disable and stop nrpe
-  when: not nrpe_enable|bool
+  when: not nrpe_enable | bool
 
 # EOF

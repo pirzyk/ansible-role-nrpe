@@ -3,7 +3,7 @@
   ansible.builtin.file:
     path: "{{ nrpe_conf_file }}"
     state: absent
-  when: nrpe_conf_recreate|default(false)|bool
+  when: nrpe_conf_recreate | d(false) | bool
 
 - name: "Nrpe: Create {{ nrpe_conf_file }}"
   ansible.builtin.command:
@@ -24,7 +24,7 @@
     line: "{{ item.key }}={{ item.val }}"
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
-  when: item.present|default(true)
+  when: item.present | d(true)
   notify: reload nrpe
 
 - name: "Nrpe: Remove items from {{ nrpe_conf_file }}"
@@ -35,7 +35,7 @@
     line: "# {{ item.key }}=\\1"
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
-  when: not item.present|default(true)
+  when: not item.present | d(true)
   notify: reload nrpe
 
 - name: "Nrpe: Create {{ nrpe_conf_file_dir }}"
