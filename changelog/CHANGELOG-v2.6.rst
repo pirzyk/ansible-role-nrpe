@@ -3,25 +3,21 @@ vbotka.nrpe 2.6 Release Notes
 =============================
 
 .. contents:: Topics
-# BEGIN Commits 2.6.1
-- Update python 3.11 in .travis.yml
-# END Commits 2.6.1
-# BEGIN Release notes 2.6.1
+
+
 2.6.1
 =====
+
 Release Summary
 ---------------
+Maintenance update.
+
 Major Changes
 -------------
+
 Minor Changes
 -------------
 - Update python 3.11 in .travis.yml
-
-Bugfixes
---------
-Breaking Changes / Porting Guide
---------------------------------
-# END Release notes 2.6.1
 
 
 2.6.0
@@ -43,9 +39,3 @@ Minor Changes
 * Add changelog
 * Update Ansible lint configuration.
 * Update README.
-
-Bugfixes
---------
-
-Breaking Changes / Porting Guide
---------------------------------
