@@ -1,6 +1,6 @@
 ---
 # defaults for nrpe
-nrpe_role_version: 2.6.0
+nrpe_role_version: 2.6.1
 
 nrpe_enable: false
 nrpe_install: true
