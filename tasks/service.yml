@@ -1,7 +1,7 @@
 ---
 - name: "Service: Config FreeBSD"
   ansible.builtin.include_tasks: rcconf.yml
-  when: ansible_os_family == 'FreeBSD'
+  when: ansible_facts['os_family'] == 'FreeBSD'
 
 - name: "Service: {{ state ~ ' ' ~ nrpe_service }}"
   ansible.builtin.service:

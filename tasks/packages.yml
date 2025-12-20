@@ -1,6 +1,6 @@
 ---
 - name: "Packages: Install FreeBSD packages"
   ansible.builtin.include_tasks: packages-freebsd.yml
-  when: ansible_os_family == 'FreeBSD'
+  when: ansible_facts['os_family'] == 'FreeBSD'
 
 # EOF
