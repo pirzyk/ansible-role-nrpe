@@ -3,7 +3,7 @@
 
 - name: Import vars.yml
   ansible.builtin.import_tasks: vars.yml
-  tags: [nrpe_vars, always]
+  tags: nrpe_vars
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
