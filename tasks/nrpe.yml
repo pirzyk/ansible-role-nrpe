@@ -25,7 +25,7 @@
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
   when: item.present | d(true)
-  notify: reload nrpe
+  notify: restart nrpe
 
 - name: "Nrpe: Remove items from {{ nrpe_conf_file }}"
   ansible.builtin.lineinfile:
@@ -36,7 +36,7 @@
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
   when: not item.present | d(true)
-  notify: reload nrpe
+  notify: restart nrpe
 
 - name: "Nrpe: Create {{ nrpe_conf_file_dir }}"
   ansible.builtin.file:
